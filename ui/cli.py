@@ -1,6 +1,6 @@
 import argparse
-from schema import validate_input
-from deepseek_api import call_deepseek_model
+# from schema import validate_input
+# from deepseek_api import call_deepseek_model
 
 def main():
     parser = argparse.ArgumentParser(description="调用 DeepSeek API 进行文本生成")
@@ -14,16 +14,18 @@ def main():
     }
 
     # 校验输入格式
-    try:
-        validate_input(input_data)
-    except ValueError as e:
-        print(f"[输入错误] {e}")
-        return
+    # try:
+    #     validate_input(input_data)
+    # except ValueError as e:
+    #     print(f"[输入错误] {e}")
+    #     return
 
     # 调用模型
     try:
         print(f"\n[模型调用中] prompt: {args.prompt} | temperature: {args.temperature}")
-        output = call_deepseek_model(prompt=args.prompt, temperature=args.temperature)
+        # output = call_deepseek_model(prompt=args.prompt, temperature=args.temperature)
+        output = "这是一个模拟回复。请替换为实际调用结果。"  # 模拟输出，实际使用时替换为模型调用结果
+         # 模拟输出，实际使用时替换为模型调用结果
         print("\n[模型输出]")
         print(output)
     except Exception as e:
