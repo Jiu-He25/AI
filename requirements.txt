@@ -1,3 +1,5 @@
 如有别的依赖请补充
 
 1.pyqt5
+2.jsonschema
+3.aiohttp

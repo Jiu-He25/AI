@@ -1,4 +1,3 @@
-# JSON Schema 定义和校验器 异常处理
 import aiohttp
 import json
 import asyncio
