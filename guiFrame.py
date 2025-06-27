@@ -9,6 +9,7 @@ class ChatForm(QWidget):
         super().__init__()
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+        
 
         # 设置聊天框只读
         self.ui.textEdit_chat.setReadOnly(True)

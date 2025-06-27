@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>525</width>
-    <height>555</height>
+    <width>527</width>
+    <height>510</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QTextEdit" name="textEdit_chat">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>160</y>
-     <width>361</width>
-     <height>211</height>
+     <x>30</x>
+     <y>50</y>
+     <width>461</width>
+     <height>321</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -29,40 +29,40 @@
   <widget class="QLineEdit" name="lineEdit_input">
    <property name="geometry">
     <rect>
-     <x>82</x>
+     <x>30</x>
      <y>379</y>
-     <width>361</width>
-     <height>61</height>
+     <width>461</width>
+     <height>91</height>
     </rect>
    </property>
    <property name="placeholderText">
-    <string>请</string>
+    <string>请输入你的问题</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>130</y>
-     <width>54</width>
-     <height>12</height>
+     <x>30</x>
+     <y>10</y>
+     <width>211</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;DeepSeek聊天&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_send">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>410</y>
-     <width>75</width>
+     <x>424</x>
+     <y>440</y>
+     <width>61</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>发送</string>
    </property>
   </widget>
  </widget>

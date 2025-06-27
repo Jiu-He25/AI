@@ -14,19 +14,19 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(525, 555)
+        Form.resize(527, 510)
         self.textEdit_chat = QtWidgets.QTextEdit(Form)
-        self.textEdit_chat.setGeometry(QtCore.QRect(80, 160, 361, 211))
+        self.textEdit_chat.setGeometry(QtCore.QRect(30, 50, 461, 321))
         self.textEdit_chat.setReadOnly(True)
         self.textEdit_chat.setObjectName("textEdit_chat")
         self.lineEdit_input = QtWidgets.QLineEdit(Form)
-        self.lineEdit_input.setGeometry(QtCore.QRect(82, 379, 361, 61))
+        self.lineEdit_input.setGeometry(QtCore.QRect(30, 379, 461, 91))
         self.lineEdit_input.setObjectName("lineEdit_input")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(90, 130, 54, 12))
+        self.label.setGeometry(QtCore.QRect(30, 10, 211, 41))
         self.label.setObjectName("label")
         self.pushButton_send = QtWidgets.QPushButton(Form)
-        self.pushButton_send.setGeometry(QtCore.QRect(360, 410, 75, 23))
+        self.pushButton_send.setGeometry(QtCore.QRect(424, 440, 61, 23))
         self.pushButton_send.setObjectName("pushButton_send")
 
         self.retranslateUi(Form)
@@ -35,6 +35,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.lineEdit_input.setPlaceholderText(_translate("Form", "请"))
-        self.label.setText(_translate("Form", "TextLabel"))
-        self.pushButton_send.setText(_translate("Form", "PushButton"))
+        self.lineEdit_input.setPlaceholderText(_translate("Form", "请输入你的问题"))
+        self.label.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">DeepSeek聊天</span></p></body></html>"))
+        self.pushButton_send.setText(_translate("Form", "发送"))
