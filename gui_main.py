@@ -5,7 +5,7 @@ from PyQt5.QtGui import QTextCursor
 from new import run_llm_application
 import asyncio
 from qasync import QEventLoop, asyncSlot  # 新增导入
-
+import os
 
 class Ui_Form:
     def setupUi(self, Form):
@@ -72,23 +72,6 @@ class ChatForm(QWidget):
         # 打字机效果
         self.typewriter = Typewriter(self.ui.textEdit_chat)
         
-    # def handle_send(self):
-    #     """发送按钮点击或回车：获取用户输入，调用大模型，显示回复"""
-    #     user_input = self.ui.lineEdit_input.text().strip()
-    #     if not user_input:
-    #         return
-            
-    #     self.append_message("👤 你", user_input)
-    #     self.ui.lineEdit_input.clear()
-        
-    #     # 保持原有模型调用逻辑不变
-    #     try:
-    #         # 这里应该调用实际的模型API
-    #         # reply = call_deepseek_model(prompt=user_input)
-    #         reply = "这是一个模拟回复。请替换为实际调用结果。"
-    #         self.typewriter.start(reply)
-    #     except Exception as e:
-    #         self.append_message("🤖 DeepSeek", f"[模型异常] {e}")
     @asyncSlot()  # 使用qasync的异步槽装饰器
     async def handle_send(self):
         """异步处理用户发送的消息"""
@@ -103,7 +86,7 @@ class ChatForm(QWidget):
         try:
             # 构造输入数据
             input_data = {
-                "api_key": 'sk-32b705ff866949f788a2fde04f9d0fb0',  # 替换为你的API Key
+                "api_key": os.getenv("DEEPSEEK_API_KEY"),  # 替换为你的API Key
                 "prompt": user_input,
                 "modality": "text",
                 "parameters": {
@@ -137,13 +120,6 @@ class ChatForm(QWidget):
             self.ui.textEdit_chat.verticalScrollBar().maximum()
         )
 
-# def gui():
-#     """启动 GUI 应用"""
-#     app = QApplication(sys.argv)
-#     window = ChatForm()
-#     window.setWindowTitle("DeepSeek 聊天界面")
-#     window.show()
-#     sys.exit(app.exec_())
 def gui():
     """启动 GUI 应用（集成异步事件循环）"""
     app = QApplication(sys.argv)

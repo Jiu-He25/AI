@@ -180,88 +180,6 @@ class Validator:
             sanitized["parameters"] = params
         return sanitized
 
-# async def run_llm_application(input_data):
-#     """运行大语言模型应用主流程"""
-#     try:
-#         # 1. 初始化模块
-#         api_key = input_data.get("api_key", "")
-#         model_url = input_data.get("model_url", "https://api.deepseek.com/v1/chat/completions")
-#         llm_service = LLMService(api_key, model_url)
-#         stream_handler = StreamHandler(llm_service)
-#         preprocessor = InputPreprocessor()
-#         exception_handler = LLMExceptionHandler(max_retries=3, retry_delay=2)
-
-#         # 2. 输入预处理
-#         preprocessed_data = preprocessor.preprocess_input(input_data)
-
-#         # 转换为messages格式
-#         messages = [{"role": "user", "content": preprocessed_data["prompt"]}]
-#         if "context" in preprocessed_data:
-#             messages = preprocessed_data["context"] + messages
-
-#         params = preprocessed_data.get("parameters", {})
-
-#         # 3. 参数调优（可选）
-#         if input_data.get("tune_parameters", False):
-#             tuner = ParameterTuner(llm_service)
-#             params = tuner.recommend_parameters(messages[0]["content"], params)
-#             print(f"调优后参数: {params}")
-
-#         if params.get("stream", False):
-#             # 流式响应处理
-#             print("模型输出（流式）:")
-#             full_response = ""
-#             async for chunk in stream_handler.stream_response(messages, params):
-#                 print(chunk, end="", flush=True)
-#                 full_response += chunk
-#             print("\n")
-
-#             # 检查是否有错误信息
-#             if full_response.startswith("[错误:"):
-#                 raise LLMServiceException(full_response)
-
-#             # 处理结构化输出
-#             if input_data.get("expect_structured_output", False):
-#                 structured_output = exception_handler.handle_structured_output_failure(
-#                     full_response,
-#                     OUTPUT_SCHEMA
-#                 )
-#                 print("结构化输出结果:")
-#                 print(json.dumps(structured_output, ensure_ascii=False, indent=2))
-
-#         else:
-#             # 非流式处理
-#             response = exception_handler.handle_api_failure(
-#                 lambda: llm_service.call_model(messages, **params),
-#                 params
-#             )
-
-#             if response and "choices" in response:
-#                 output_text = response["choices"][0]["message"]["content"]
-#                 print(f"模型输出: {output_text}")
-
-#                 # 处理结构化输出
-#                 if input_data.get("expect_structured_output", False):
-#                     structured_output = exception_handler.handle_structured_output_failure(
-#                         output_text,
-#                         OUTPUT_SCHEMA
-#                     )
-#                     print("结构化输出结果:")
-#                     print(json.dumps(structured_output, ensure_ascii=False, indent=2))
-#             else:
-#                 raise LLMServiceException(f"无效的模型响应: {response}")
-
-#         return {"status": "success", "response": response if not params.get("stream") else full_response}
-
-#     except SecurityException as se:
-#         print(f"安全警告: {str(se)}")
-#         return {"status": "error", "message": str(se)}
-#     except LLMServiceException as lse:
-#         print(f"模型服务异常: {str(lse)}")
-#         return {"status": "error", "message": str(lse)}
-#     except Exception as e:
-#         print(f"应用运行错误: {str(e)}")
-#         return {"status": "error", "message": str(e)}
 async def run_llm_application(input_data):
     """运行大语言模型应用主流程，直接返回模型回复文本"""
     try:
@@ -311,6 +229,7 @@ async def run_llm_application(input_data):
     except Exception as e:
         return f"应用运行错误: {str(e)}"
 
+#测试的部分
 async def main():
     sample_input = {
         "api_key": 'sk-32b705ff866949f788a2fde04f9d0fb0',
@@ -327,30 +246,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())  # 启动异步主函数
-# if __name__ == "__main__":
-#     # 优化后的提示词（明确、无敏感词）
-#     # sample_input = {
-#     #     "api_key": 'sk-32b705ff866949f788a2fde04f9d0fb0',
-#     #     "prompt": "what can you do?",
-#     #     "modality": "text",
-#     #     "parameters": {
-#     #         "temperature": 0.7,  # 降低随机性，使故事结构更紧凑
-#     #         "max_tokens": 800,  # 增加生成长度以包含完整情节
-#     #         "stream": True  # 启用流式输出
-#     #     },
-#     #     "tune_parameters": True,  # 启用参数调优
-#     #     "expect_structured_output": False
-#     # }
-    
-#     #asyncio.run(run_llm_application(sample_input))
-#     # 调用示例
-#     response_text = await run_llm_application({
-#         "api_key": 'sk-32b705ff866949f788a2fde04f9d0fb0',
-#         "prompt": "你好，请介绍一下你自己",
-#         "modality": "text",
-#         "parameters": {
-#             "temperature": 0.7,
-#             "max_tokens": 500
-#         }
-#     })
-#     print(response_text)  # 直接打印模型回复
