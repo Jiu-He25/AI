@@ -1,0 +1,26 @@
+[
+  {
+    "prompt": "请写一段描写春天的优美文字。",
+    "temperature": 0.3
+  },
+  {
+    "prompt": "请写一段描写春天的优美文字。",
+    "temperature": 1.2
+  },
+  {
+    "prompt": "如何向小学生解释人工智能？",
+    "temperature": 0.5
+  },
+  {
+    "prompt": "如何向小学生解释人工智能？",
+    "temperature": 1.0
+  },
+  {
+    "prompt": "列出三个未来可能被 AI 替代的职业，并说明原因。",
+    "temperature": 0.7
+  },
+  {
+    "prompt": "列出三个未来可能被 AI 替代的职业，并说明原因。",
+    "temperature": 1.5
+  }
+]
